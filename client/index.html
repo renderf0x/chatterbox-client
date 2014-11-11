@@ -6,12 +6,14 @@
    <!-- <link rel="stylesheet" href="styles/styles.css"> -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/custom.css">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- dependencies -->
     <script src="bower_components/jquery/jquery.min.js"></script>
     <script src="bower_components/underscore/underscore-min.js"></script>
     <script src="bower_components/validator-js/validator.min.js"></script>
     <script src="bower_components/handlebars/handlebars.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- your scripts -->
     <script src="env/config.js"></script>
     <script src="scripts/app.js"></script>
@@ -19,14 +21,43 @@
   <body>
     <div id="main">
       <h1>chatterbox</h1>
-      <!-- Your HTML goes here! -->
         <div class="container">
           <div class="row">
+          <!-- Room List -->
             <div class="col-md-2"><h3>Rooms</h3>
               <ul class="nav nav-pills nav-stacked rooms" role="tablist">
                 <li><a href='#' class="active roomName"></a></li>
               </ul>
+              <!-- add room button -->
+              <div>
+                <i class="fa fa-plus-square fa-2x createRoom"></i>
+              </div>
+              <!-- friends section -->
+              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <i class="fa fa-users"></i> Friends
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                      <ul class="list-unstyled friendslist">
+                        <li><a href="#">Rachel</a></li>
+                        <script id="friendTemplate" type="text/x-handlebars-template">
+                        {{#each this}}
+                          <li><a href="#">{{this}}</a></li>
+                        {{/each}}
+                        </script>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                </div>
             </div>
+            <!--Messages -->
             <div class="col-md-8"><h3>Messages</h3>
               <div class="postForm">
                 <input type="text" class="postContent" name="postContent">
@@ -36,7 +67,19 @@
                 <script class="messageTemplate" type="text/x-handlebars-template">
                     <div class="message">
                       <div class="panel panel-default">
-                        <div class="panel-heading">{{username}}
+                        <div class="panel-heading"><a href="#" id="user-{{username}}" class="userLink">{{username}}</a>
+                          <span class="messageRoom block"> {{roomname}}</span>
+                        </div>
+                        <div class="panel-body">
+                           {{text}}
+                        </div>
+                      </div>
+                    </div>
+                </script>
+                <script class="friendMessageTemplate" type="text/x-handlebars-template">
+                    <div class="message">
+                      <div class="panel panel-default">
+                        <div class="panel-heading"><b><a href="#" id="user-{{username}}" class="userLink">{{username}}</a></b>
                           <span class="messageRoom block"> {{roomname}}</span>
                         </div>
                         <div class="panel-body">

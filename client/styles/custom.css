@@ -10,3 +10,11 @@
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+
+.createRoom {
+  color: #428bca;
+}
+
+.createRoom:hover {
+  color: blue;
+}
