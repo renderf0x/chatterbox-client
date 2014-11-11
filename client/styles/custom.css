@@ -1,3 +1,12 @@
-messageRoom {
+.messageRoom {
   float: right;
+}
+
+.postContent {
+	width: 500px;
+}
+
+.postForm {
+	margin-top: 20px;
+	margin-bottom: 20px;
 }

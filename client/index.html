@@ -22,25 +22,25 @@
       <!-- Your HTML goes here! -->
         <div class="container">
           <div class="row">
-            <div class="col-md-2">Rooms
+            <div class="col-md-2"><h3>Rooms</h3>
               <ul class="nav nav-pills nav-stacked rooms" role="tablist">
                 <li><a href='#' class="active roomName"></a></li>
               </ul>
             </div>
-            <div class="col-md-8">Messages
-              <div>
-                <input type="text" name="postContent">
+            <div class="col-md-8"><h3>Messages</h3>
+              <div class="postForm">
+                <input type="text" class="postContent" name="postContent">
                 <button class="btn btn-primary sendPost">send</button>
               </div>
               <div class="messages">
                 <script class="messageTemplate" type="text/x-handlebars-template">
                     <div class="message">
                       <div class="panel panel-default">
-                        <div class="panel-heading">{{message.username}}
-                          <span class="messageRoom block"> {{message.roomname}}</span>
+                        <div class="panel-heading">{{username}}
+                          <span class="messageRoom block"> {{roomname}}</span>
                         </div>
                         <div class="panel-body">
-                           {{message.text}}
+                           {{text}}
                         </div>
                       </div>
                     </div>

@@ -1,3 +1,23 @@
+/* GLOBALS *************************************/
+
+var roomNames = {
+  home: true
+};
+
+var messageTemplate;
+
+$(document).ready(function(){
+  $(".sendPost").click(function(){
+  postMessage();
+});
+
+  fetchMessages();
+
+  var source   = $(".messageTemplate").html();
+  messageTemplate = Handlebars.compile(source);
+
+});
+
 var fetchMessages = function(){
   var params = '';
   console.log(JSON.stringify(roomNames));
@@ -56,9 +76,6 @@ var postMessage = function(){
 };
 
 
-var roomNames = {
-  home: true
-};
 
 /* ROOMS *************************************/
 
@@ -127,10 +144,6 @@ var sanityCheck = function(text){
   var regObj = new RegExp(/[\W]/i);
   return !regObj.test(text);
 };
-//debugger;
-console.log
-var source   = $(".messageTemplate").html();
-var messageTemplate = Handlebars.compile(source);
 
 var displayMessage = function(message){
   if(message.username && sanityCheck(message.text) && sanityCheck(message.username)){
@@ -139,10 +152,3 @@ var displayMessage = function(message){
   }
 }
 
-$(document).ready(function(){
-  $(".sendPost").click(function(){
-  postMessage();
-});
-
-  fetchMessages();
-});
