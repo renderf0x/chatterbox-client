@@ -5,7 +5,8 @@
     "jquery": "~2.0.3",
     "underscore": "~1.7.0",
     "validator-js": "~3.22.1",
-    "bootstrap": "~3.3.0"
+    "bootstrap": "~3.3.0",
+    "handlebars": "~2.0.0"
   },
   "ignore": [
     "**/.*",

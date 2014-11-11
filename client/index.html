@@ -5,11 +5,13 @@
     <title>chatterbox</title>
    <!-- <link rel="stylesheet" href="styles/styles.css"> -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/custom.css">
 
     <!-- dependencies -->
     <script src="bower_components/jquery/jquery.min.js"></script>
     <script src="bower_components/underscore/underscore-min.js"></script>
     <script src="bower_components/validator-js/validator.min.js"></script>
+    <script src="bower_components/handlebars/handlebars.min.js"></script>
     <!-- your scripts -->
     <script src="env/config.js"></script>
     <script src="scripts/app.js"></script>
@@ -20,15 +22,30 @@
       <!-- Your HTML goes here! -->
         <div class="container">
           <div class="row">
-            <div class="col-md-4">Rooms
-              <ul class="nav nav-pills nav-stacked rooms" role="tablist"></ul>
+            <div class="col-md-2">Rooms
+              <ul class="nav nav-pills nav-stacked rooms" role="tablist">
+                <li><a href='#' class="active roomName"></a></li>
+              </ul>
             </div>
             <div class="col-md-8">Messages
               <div>
                 <input type="text" name="postContent">
-                <button class="sendPost">send</button>
+                <button class="btn btn-primary sendPost">send</button>
               </div>
-              <div class="messages"></div>
+              <div class="messages">
+                <script class="messageTemplate" type="text/x-handlebars-template">
+                    <div class="message">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">{{message.username}}
+                          <span class="messageRoom block"> {{message.roomname}}</span>
+                        </div>
+                        <div class="panel-body">
+                           {{message.text}}
+                        </div>
+                      </div>
+                    </div>
+                </script>
+              </div>
             </div>
           </div>
         </div>
