@@ -1,14 +1,18 @@
 var fetchMessages = function(){
   var params = '';
   if(!roomNames['home']){
-    params = 'where={"roomname":"peter"}';
+    for(key in roomNames){
+      if(roomNames[key]){
+        params = 'where={"roomname":"'+key+'"}';
+      }
+    }
   }
-
+  console.log(params);
   $.ajax({
     // always use this url
     url: 'https://api.parse.com/1/classes/chatterbox',
     type: 'GET',
-    data: 'order=-createdAt;limit=20' + params,
+    data: 'order=-createdAt;limit=20;' + params,
     contentType: 'application/json',
     success: function (data) {
       displayMessages(data.results);
@@ -72,6 +76,7 @@ var displayRooms = function(){
   $('.roomName').click(function(){
     console.log('meow');
     setActiveRoom($(this).text());
+    fetchMessages();
   });
 }
 
