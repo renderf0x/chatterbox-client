@@ -1,0 +1,20 @@
+.messageRoom {
+  float: right;
+}
+
+.postContent {
+	width: 500px;
+}
+
+.postForm {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.createRoom {
+  color: #428bca;
+}
+
+.createRoom:hover {
+  color: blue;
+}
